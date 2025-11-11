@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+ <head>
+
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+realwidth = 600;
+realheight = 600;
+window.onload=function() {
+    canv=document.getElementById("gc");
+    ctx=canv.getContext("2d");
+    ctx.width = realwidth;
+    ctx.height = realheight;
+    ctx.fillStyle = "black";
+    GenerateMap();
+  //  setInterval(collisionChecker, 1000/120);
+  //  setInterval(ball,1000/10);
+}
+pepper = 10;
+width = realwidth/pepper;
+height = realheight/pepper;
+
+probability = 0.65;
+map = new Array(width);
+for (var i = 0; i < map.length; i++) {
+  map[i] = new Array(height);
+}
+
+function GenerateMap() {
+  fillMap();
+  for (var i = 0; i < 80; i++) {
+    smoothMap();
+
+  }
+    drawMap()
+}
+
+function fillMap() {
+  for (var i = 0; i < map.length; i++) {
+    for (var j = 0; j < map[i].length; j++) {
+      if (i == 0 || j == 0 || i == width - 1 || j == height - 1) {
+        map[i][j] = -3;
+      } else {
+      map[i][j] = Math.random()*10 - 5;
+      }
+    }
+  }
+}
+
+function smoothMap() {
+  for (var i = 0; i < map.length; i++) {
+    for (var j = 0; j < map[i].length; j++) {
+      var surroundingsSum = getNeighbours(i,j)/8;
+  //    console.log(surroundingsSum, i, j);
+      if (map[i][j] < surroundingsSum) { map[i][j] += 1.4 }
+      else { map[i][j] -= 0.2 }
+    }
+  }
+}
+
+function getNeighbours(x,y) {
+  var quantity = 0;
+  for (var nx = x-1; nx <= x+1; nx++) {
+    for (var ny = y-1; ny <= y+1; ny++) {
+      if (nx >= 0 && nx < width && ny > 0 && ny < height && ( nx != x || ny != y)){
+        quantity += map[nx][ny];
+      } else {
+        quantity += -4;
+      }
+    }
+  }
+  return quantity;
+}
+
+function drawMap() {
+  for (var i = 0; i < map.length; i++) {
+    for (var j = 0; j < map[i].length; j++) {
+      if (map[i][j] > 0 && map[i][j] < 1) { ctx.fillStyle = "hsl(55, 63%, 69%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] >=1 && map[i][j] < 2) { ctx.fillStyle = "hsl(120, 45%, 50%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] >=2 && map[i][j] < 3) { ctx.fillStyle = "hsl(120, 45%, 30%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] >=3 && map[i][j] < 4) { ctx.fillStyle = "hsl(48, 23%, 30%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] >=4 && map[i][j] < 5) { ctx.fillStyle = "hsl(48, 23%, 15%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] >=5) { ctx.fillStyle = "hsl(48, 23%, 100%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] <= 0 && map[i][j] > -1) { ctx.fillStyle = "hsl(197, 42%, 52%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] <= -1 && map[i][j] > -2) { ctx.fillStyle = "hsl(197, 47%, 38%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] <= -2 && map[i][j] > -3) { ctx.fillStyle = "hsl(197, 47%, 25%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+      else if (map[i][j] <= -3) { ctx.fillStyle = "hsl(197, 62%, 14%)"; ctx.fillRect(i*pepper,j*pepper,pepper,pepper);   }
+    }
+  }
+}
+</script>
+ </head>
+ <body>
+<canvas id="gc" width="600" height="600"></canvas>
+
+
+ </body>
+</html>
