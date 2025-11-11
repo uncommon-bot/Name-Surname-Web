@@ -35,7 +35,7 @@
 ## 🖼️ Скриншоты
 
 ### Скриншот 1
-![Screenshot 1](./images/screenshot1.png)
+![Screenshot 1](./images/image1.png)
 
 ### Скриншот 2
-![Screenshot 2](./images/screenshot2.png)
+![Screenshot 2](./images/image2.png)
