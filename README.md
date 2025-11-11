@@ -38,3 +38,28 @@
   <img src="./images/image1.png" width="400">
   <img src="./images/image2.png" width="400">
 </p>
+
+
+---
+
+
+## 📞 Контакты
+
+<div align="center">
+
+###  🌐 <a href="https://easypro.academy/" target="_blank">easypro.academy</a>
+
+
+
+### 📱  <strong>+7 (499) 283-17-14</strong>
+
+
+<a href="https://vk.com/easypro.academy" target="_blank">
+  <img src="https://easypro.academy/_next/image?url=%2Fimg%2Fdifferent%2Fvk.webp&w=64&q=75" width="45" alt="VK"/>
+</a>
+&nbsp;&nbsp;&nbsp;
+<a href="https://t.me/easypro_channel" target="_blank">
+  <img src="https://easypro.academy/_next/image?url=%2Fimg%2Fdifferent%2Ftelegram.webp&w=32&q=75" width="45" alt="Telegram"/>
+</a>
+
+</div>
