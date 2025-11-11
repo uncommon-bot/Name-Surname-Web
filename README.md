@@ -34,8 +34,7 @@
 
 ## 🖼️ Скриншоты
 
-### Скриншот 1
-![Screenshot 1](./images/image1.png)
-
-### Скриншот 2
-![Screenshot 2](./images/image2.png)
+<p align="center">
+  <img src="./images/image1.png" width="400">
+  <img src="./images/image2.png" width="400">
+</p>
